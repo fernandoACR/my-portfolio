@@ -38,20 +38,19 @@ const Portfolio: React.FC = () => {
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <ProjectCard title="Club SAAS" description="Loyalty Program for a Pharmacy Chain." link="https://www.youtube.com/watch?v=6u9l1JhBQ8Q&ab_channel=FCR-Portfolio" link2="#" />
             <ProjectCard title="MedTor" description="Dental Management Application." link="https://www.youtube.com/watch?v=g2nk599pdVs&ab_channel=FCR-Portfolio" link2="https://github.com/fernandoACR/medtor" />
-            <ProjectCard title="SICEF" description="Human Resources Management Application." link="#" link2="#" />
             <ProjectCard title="ITventory" description="An application to manage and track IT inventory efficiently." link="#" link2="https://github.com/fernandoACR/ITventory" />
           </div>
-        </section>
+    </section>
 
 {/* Gallery */}
-<section className="text-center">
+    <section className="text-center">
           <h2 className="text-3xl font-semibold mb-4">Gallery</h2>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             <img src={awsSummit} alt="AWS Summit" className="mx-auto rounded-lg shadow-lg w-full h-auto" />
             <img src={gqlConf} alt="GraphQL Conference" className="mx-auto rounded-lg shadow-lg w-full h-auto" />
             <img src={codeTracks} alt="CodeTracks London, Ontario" className="mx-auto rounded-lg shadow-lg w-full h-auto" />
           </div>
-        </section>
+    </section>
     
     {/* Contact Section */}
     <section className="text-center">
@@ -75,27 +74,40 @@ interface ProjectCardProps {
   link2: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, link , link2 }) => (
-  <div className="p-6 border rounded-lg space-x-4">
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, link, link2 }) => (
+  <div className="p-6 border rounded-lg space-y-4 bg-white shadow-md hover:shadow-lg transition-shadow duration-300">
     <h3 className="text-xl font-bold">{title}</h3>
-    <p className="text-gray-400">{description}</p>
-    <br/>
-    <a
-      href={link2} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="mt-4 inline-block border p-2 rounded bg-blue-500"
-    >
-      Code
-    </a>
-    <a
-      href={link} 
-      target="_blank" 
-      rel="noopener noreferrer" 
-      className="mt-4 inline-block border p-2 rounded bg-blue-500"
-    >
-      Demo
-    </a>
+    <p className="text-gray-600">{description}</p>
+    <div className="flex space-x-4">
+      {link2 ? (
+        <a
+          href={link2}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block border p-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300"
+        >
+          Code
+        </a>
+      ) : (
+        <span className="mt-4 inline-block border p-2 rounded bg-gray-300 text-white cursor-not-allowed">
+          Code
+        </span>
+      )}
+      {link ? (
+        <a
+          href={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="mt-4 inline-block border p-2 rounded bg-blue-500 text-white hover:bg-blue-600 transition-colors duration-300"
+        >
+          Demo
+        </a>
+      ) : (
+        <span className="mt-4 inline-block border p-2 rounded bg-gray-300 text-white cursor-not-allowed">
+          Demo
+        </span>
+      )}
+    </div>
   </div>
 );
 
